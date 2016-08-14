@@ -3,8 +3,8 @@
 import mongoose from 'mongoose';
 
 var QuestionSchema = new mongoose.Schema({
-  name: String,
-  info: String,
+  title: String,
+  content: String,
   active: Boolean
 });
 

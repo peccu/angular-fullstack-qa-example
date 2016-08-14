@@ -33,8 +33,8 @@ describe('Question API:', function() {
       request(app)
         .post('/api/questions')
         .send({
-          name: 'New Question',
-          info: 'This is the brand new question!!!'
+          title: 'New Question',
+          content: 'This is the brand new question!!!'
         })
         .expect(201)
         .expect('Content-Type', /json/)
@@ -48,8 +48,8 @@ describe('Question API:', function() {
     });
 
     it('should respond with the newly created question', function() {
-      newQuestion.name.should.equal('New Question');
-      newQuestion.info.should.equal('This is the brand new question!!!');
+      newQuestion.title.should.equal('New Question');
+      newQuestion.content.should.equal('This is the brand new question!!!');
     });
   });
 
@@ -75,8 +75,8 @@ describe('Question API:', function() {
     });
 
     it('should respond with the requested question', function() {
-      question.name.should.equal('New Question');
-      question.info.should.equal('This is the brand new question!!!');
+      question.title.should.equal('New Question');
+      question.content.should.equal('This is the brand new question!!!');
     });
   });
 
@@ -87,8 +87,8 @@ describe('Question API:', function() {
       request(app)
         .put(`/api/questions/${newQuestion._id}`)
         .send({
-          name: 'Updated Question',
-          info: 'This is the updated question!!!'
+          title: 'Updated Question',
+          content: 'This is the updated question!!!'
         })
         .expect(200)
         .expect('Content-Type', /json/)
@@ -106,8 +106,8 @@ describe('Question API:', function() {
     });
 
     it('should respond with the original question', function() {
-      updatedQuestion.name.should.equal('New Question');
-      updatedQuestion.info.should.equal('This is the brand new question!!!');
+      updatedQuestion.title.should.equal('New Question');
+      updatedQuestion.content.should.equal('This is the brand new question!!!');
     });
 
     it('should respond with the updated question on a subsequent GET', function(done) {
@@ -121,8 +121,8 @@ describe('Question API:', function() {
           }
           let question = res.body;
 
-          question.name.should.equal('Updated Question');
-          question.info.should.equal('This is the updated question!!!');
+          question.title.should.equal('Updated Question');
+          question.content.should.equal('This is the updated question!!!');
 
           done();
         });
@@ -136,8 +136,8 @@ describe('Question API:', function() {
       request(app)
         .patch(`/api/questions/${newQuestion._id}`)
         .send([
-          { op: 'replace', path: '/name', value: 'Patched Question' },
-          { op: 'replace', path: '/info', value: 'This is the patched question!!!' }
+          { op: 'replace', path: '/title', value: 'Patched Question' },
+          { op: 'replace', path: '/content', value: 'This is the patched question!!!' }
         ])
         .expect(200)
         .expect('Content-Type', /json/)
@@ -155,8 +155,8 @@ describe('Question API:', function() {
     });
 
     it('should respond with the patched question', function() {
-      patchedQuestion.name.should.equal('Patched Question');
-      patchedQuestion.info.should.equal('This is the patched question!!!');
+      patchedQuestion.title.should.equal('Patched Question');
+      patchedQuestion.content.should.equal('This is the patched question!!!');
     });
   });
 
