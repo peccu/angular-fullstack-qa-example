@@ -7,9 +7,22 @@ import routes from './questionsCreate.routes';
 
 export class QuestionsCreateComponent {
   /*@ngInject*/
-  constructor() {
+  constructor($http, $location) {
+    this.$http = $http;
+    this.$location = $location;
     this.message = 'Hello';
   }
+
+  addQuestion() {
+    console.log(this.question);
+    if (this.question) {
+      this.$http.post('/api/questions', this.question)
+      .then(response => {
+        this.$location.path('/questions');
+      });
+    }
+  }
+
 }
 
 export default angular.module('qaApp.questionsCreate', [ngRoute])
