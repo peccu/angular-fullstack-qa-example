@@ -26,6 +26,7 @@ import main from './main/main.component';
 import constants from './app.constants';
 import util from '../components/util/util.module';
 import socket from '../components/socket/socket.service';
+import questions from './questions/questions.component';
 
 import './app.less';
 
@@ -36,6 +37,7 @@ angular.module('qaApp', [
 
     // ngValidationMatch,
     _Auth, account, admin, navbar, footer, main, constants, socket, util
+  , questions
   ])
   .config(routeConfig)
   .run(function($rootScope, $location, Auth) {
@@ -54,6 +56,6 @@ angular.module('qaApp', [
 angular.element(document)
   .ready(() => {
     angular.bootstrap(document, ['qaApp'], {
-      strictDi: true
+      // strictDi: true
     });
   });
