@@ -7,8 +7,17 @@ import routes from './questionsShow.routes';
 
 export class QuestionsShowComponent {
   /*@ngInject*/
-  constructor() {
+  constructor($http, $routeParams) {
+    this.$http = $http;
+    this.$routeParams = $routeParams;
     this.message = 'Hello';
+  }
+
+  $onInit() {
+    this.$http.get('/api/questions/' + this.$routeParams.id)
+      .then(response => {
+        this.question = response.data;
+      });
   }
 }
 
