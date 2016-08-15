@@ -27,6 +27,7 @@ import constants from './app.constants';
 import util from '../components/util/util.module';
 import socket from '../components/socket/socket.service';
 import questions from './questions/questions.component';
+import questionsCreate from './questionsCreate/questionsCreate.component';
 
 import './app.less';
 
@@ -37,7 +38,7 @@ angular.module('qaApp', [
 
     // ngValidationMatch,
     _Auth, account, admin, navbar, footer, main, constants, socket, util
-  , questions
+  , questions, questionsCreate
   ])
   .config(routeConfig)
   .run(function($rootScope, $location, Auth) {
