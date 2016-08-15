@@ -14,7 +14,6 @@ export class QuestionsCreateComponent {
   }
 
   addQuestion() {
-    console.log(this.question);
     if (this.question) {
       this.$http.post('/api/questions', this.question)
       .then(response => {
